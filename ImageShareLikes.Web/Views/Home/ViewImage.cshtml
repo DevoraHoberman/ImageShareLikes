@@ -1,0 +1,28 @@
+﻿@model ImageViewModel
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="row">
+                <input type="hidden" id="image-id" value="@Model.Image.Id" />
+                <div class="col-md-10 col-md-offset-1 well">
+                    <h1>@Model.Image.Title</h1>
+                    <img src="/uploads/@Model.Image.FileName" style="width: 400px;" />
+                    <br />
+                    <br />
+                    @if (Model.Ids.Contains(Model.Image.Id))
+                    {
+                        <button disabled id="like-button" class="btn btn-primary btn-lg">LIKE</button>
+                    }
+                    else
+                    {
+                        <button id="like-button" class="btn btn-primary btn-lg">LIKE</button>
+                    }
+                    Current Likes: <span id="likes-count">@Model.Image.Likes</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+@section Scripts{ 
+    <script src="~/js/likes.js"></script>
+}
